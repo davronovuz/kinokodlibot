@@ -1,27 +1,9 @@
 from aiogram import types
-from aiogram.dispatcher.filters.builtin import CommandStart
-import asyncpg
-
-from data.config import ADMINS
-from loader import dp,userdb,bot
+from loader import dp,bot,userdb
 
 
-
-
-# botdagi foydalanuvchilar soni
-
-@dp.message_handler(commands="count")
-async def cunt_users(message:types.Message):
-    user_count= await userdb.count_users()
-    msg=f"Botdagi jami foydalanuvchilar soni\n"
-    msg+=f"{user_count} ta \n"
-    await bot.send_message(ADMINS[0],msg)
-
-
-#reklama
-@dp.message_handler(commands="reklama")
-async def reklama_function(message:types.Message):
-    users=await userdb.select_all_users()
-    for user in users:
-        await bot.send_message(user['telegram_id'],"Bu reklama")
-
+@dp.message_handler(commands="user")
+async def bot_user(message: types.Message):
+    user=await userdb.select_user(telegram_id=message.from_user.id)
+    telegram_id=user['telegram_id']
+    await userdb.delete_user(telegram_id=telegram_id)

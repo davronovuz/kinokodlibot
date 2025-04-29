@@ -2,6 +2,8 @@ from typing import Dict, Any, Optional, List
 from .postgresql import Database
 from datetime import datetime
 
+
+
 class UserDatabase(Database):
     async def create_table_users(self):
         """Foydalanuvchilar jadvalini yaratadi."""
@@ -50,6 +52,8 @@ class UserDatabase(Database):
         """Barcha foydalanuvchilarni o'chiradi."""
         sql = "DELETE FROM Users WHERE TRUE"
         await self.execute(sql, commit=True)
+
+
 
     async def update_user_last_active(self, user_id: int):
         """Foydalanuvchi oxirgi faollik vaqtini yangilaydi."""

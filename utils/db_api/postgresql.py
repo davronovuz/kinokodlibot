@@ -24,6 +24,7 @@ class Database:
             user=config.DB_USER,
             host=config.DB_HOST,
             database=config.DB_NAME,
+            password=config.DB_PASS,
 
 
         )
