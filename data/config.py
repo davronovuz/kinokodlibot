@@ -13,3 +13,4 @@ IP = env.str("ip")  # Xosting ip manzili
 DB_USER = env.str("DB_USER")  # DB user
 DB_NAME = env.str("DB_NAME")  # DB nomi
 DB_HOST = env.str("DB_HOST")
+DB_PASS = env.str("DB_PASS")
