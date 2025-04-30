@@ -17,7 +17,7 @@ async def bot_start(message: types.Message):
     except asyncpg.exceptions.UniqueViolationError:
         user=await userdb.select_user(telegram_id=message.from_user.id)
 
-    await message.answer("Salom kino botga xush kelibsiz ")
+    await message.answer("Salom bu bot eng zo'ri ")
 
     #adminga xabar
 
